@@ -1,5 +1,7 @@
 PhpGitHooks
 ===========
+[![Latest Stable Version](https://poser.pugx.org/aydin-hassan/php-git-hooks/v/stable.png)](https://packagist.org/packages/aydin0hassan/php-git-hooks)
+[![Latest Unstable Version](https://poser.pugx.org/aydin-hassan/php-git-hooks/v/unstable.png)](https://packagist.org/packages/aydin-hassan/php-git-hooks)
 
 This project contains some simple scripts to run Unit tests and static analysis tools before allowing a commit.
 
@@ -26,7 +28,8 @@ Install tools
 Install hooks
 -------------
 
-    git clone https://github.com/AydinHassan/PhpGitHooks.git
+    composer global require 'aydin-hassan/php-git-hooks:0.1.0-beta1'
+    cd ~/.composer/vendor/aydin-hassan/php-git-hooks
     ./install.sh
     
 Done
