@@ -106,6 +106,14 @@ abstract class PluginAbstract
     }
 
     /**
+     * @return string
+     */
+    public function getOutput()
+    {
+        return $this->output;
+    }
+
+    /**
      * @param array $files
      * @return string
      */
