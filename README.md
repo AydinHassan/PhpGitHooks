@@ -30,7 +30,7 @@ Install tools
 Install hooks
 -------------
 
-    composer global require 'aydin-hassan/php-git-hooks:0.1.0-beta1'
+    composer global require 'aydin-hassan/php-git-hooks:0.1.0-beta2'
     cd ~/.composer/vendor/aydin-hassan/php-git-hooks
     ./install.sh
 
