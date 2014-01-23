@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'phpcs',
-    'phpunit',
-    'phpcpd',
+    'phpcs',    => array('ruleset' => '/Users/Aydin/Desktop/jh-cs.xml'),
+    'phpunit',  => array(),
+    'phpcpd',   => array(),
 );

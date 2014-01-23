@@ -25,9 +25,15 @@ abstract class PluginAbstract
     protected $name;
 
     /**
+     * @var array
+     */
+    protected $config;
+
+    /**
      * Check shit
      */
-    public function __construct() {
+    public function __construct($pluginConfig)
+    {
 
         if (!is_string($this->binary)) {
             throw new \Exception("Binary name is not set");
@@ -36,6 +42,8 @@ abstract class PluginAbstract
         if (!is_string($this->name)) {
             throw new \Exception("Command name is not set");
         }
+
+        $this->config = $pluginConfig;
     }
 
     /**

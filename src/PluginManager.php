@@ -43,14 +43,14 @@ class PluginManager
             throw new \InvalidArgumentException("Config file contains invalid data, must be an array");
         }
 
-        foreach($config as $plugin) {
-            if(!is_string($plugin)) {
+        foreach($config as $pluginName => $pluginConfig) {
+            if(!is_string($pluginName)) {
                 continue;
             }
 
-            $class = 'Ah\PhpGitHooks\Plugins\\' . ucfirst($plugin);
+            $class = 'Ah\PhpGitHooks\Plugins\\' . ucfirst($pluginName);
             if(class_exists($class)) {
-                $this->addCheck(new $class);
+                $this->addCheck(new $class($pluginConfig));
             }
         }
     }

@@ -29,7 +29,9 @@ class Phpcs extends PluginAbstract
      */
     public function getCommand(array $files)
     {
-        return sprintf('-n --standard=psr2 %s', implode(" ", $files));
+        $standard = (isset($this->config['ruleset'])) ? $this->config['ruleset'] : 'psr2';
+
+        return sprintf('-n --standard=%s %s', $standard, implode(" ", $files));
     }
 }
 
