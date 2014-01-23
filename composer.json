@@ -1,0 +1,21 @@
+{
+    "name": "aydin-hassan/php-git-hooks",
+    "description": "Some simple git hooks to run a variety of PHP analysis tools, including PHPUnit",
+    "license": "GPL V2",
+    "authors": [
+        {
+            "name": "Aydin Hassan",
+            "email": "aydin@hotmail.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Ah\\PhpGitHooks\\": "src"
+        }
+    },
+    "bin": ["bin/ah-php-git-hooks"]
+}
