@@ -15,5 +15,5 @@ if ((!$loader = includeIfExists(__DIR__.'/../vendor/autoload.php')) && (!$loader
         'php composer.phar install'.PHP_EOL);
 }
 
-$manager = new Ah\PhpGitHooks\PluginManager(dirname(__DIR__) . '/config.php.dist');
+$manager = new \Ah\PhpGitHooks\PluginManager(dirname(__DIR__) . '/config.php.dist');
 $manager->run();

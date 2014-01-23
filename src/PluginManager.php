@@ -78,7 +78,8 @@ class PluginManager
         foreach($this->plugins as $plugin) {
             $return = $plugin->run($files);
 
-            if($return > 0) {
+            if(!$return) {
+                echo $plugin->getOutput();
                 //plugin returned non 0 return code
                 //therefore commit should not be executed
                 exit(1);
@@ -91,12 +92,49 @@ class PluginManager
      */
     protected function getFiles()
     {
-        $files = array();
 
-        if(empty($files)) {
+        $output = array();
+        $return = 0;
+        exec('git rev-parse --verify HEAD 2> /dev/null', $output, $return);
+
+        // Get GIT revision to diff against
+        if($return == 0) {
+            $against = 'HEAD';
+        } else {
+            $against = '4b825dc642cb6eb9a060e54bf8d69288fbee4904';
+        }
+
+        // Get the list of files in this commit.
+        $output = array();
+        $return = 0;
+        exec(sprintf("git diff-index --cached --name-only %s", escapeshellarg($against)), $output, $return);
+
+        if(empty($output)) {
+            //no new files
+            //so exit
+            exit(0);
+        }
+
+        $filesToLint = array();
+        foreach ($output as $file) {
+            if(substr($file, -4) !== '.php') {
+                // don't check files that aren't PHP
+                continue;
+            }
+
+            // If file is removed from git do not sniff.
+            if (!file_exists($file)) {
+                continue;
+            }
+
+            $filesToLint[] = escapeshellarg($file);
+        }
+
+        if(empty($filesToLint)) {
+            //no php files to check
             return false;
         }
 
-        return array();
+        return $filesToLint;
     }
 }
