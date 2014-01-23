@@ -17,6 +17,8 @@ PHP Code Sniffer will be run with ps2 coding standard and warning will be ingore
 
 This script will look for binaries in either the project's `vendor/bin` directory first and will fall back to `~/.composer/vendor/bin` so make sure the tools are installed with composer.
 
+See [PHP-FIG](https://github.com/php-fig/fig-standards) for the coding standards.
+
 
 Install tools
 -------------
@@ -24,14 +26,20 @@ Install tools
     composer global require 'phpunit/phpunit:3.7.*'
     composer global require 'squizlabs/php_codesniffer:1.5.1'
     composer global require 'sebastian/phpcpd=2.0.0'
-    
+
 Install hooks
 -------------
 
     composer global require 'aydin-hassan/php-git-hooks:0.1.0-beta1'
     cd ~/.composer/vendor/aydin-hassan/php-git-hooks
     ./install.sh
-    
+
+If you have any existing repositories you should run `git init` in the root of the repo to enable the hooks in them. All new repos will inherit the hooks.
+
 Done
 ----
 Everytime you commit something from any newly cloned/ created repository these checks will be executed!
+
+Todo
+----
+- [ ] Figure out how to execute global hooks if local repo hooks are defined
